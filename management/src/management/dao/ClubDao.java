@@ -26,6 +26,7 @@ public class ClubDao {
 	public void add(Club c) {
 		String sql = "insert into Club(cname,chairman,vicechairman,cintro,buildTime) values(?,?,?,?,?);";
 		try {
+			System.out.println("********88Club.dao " + c.getCname() + " " + c.getCintro());
 			DBUtil.update(sql, c.getCname(),c.getChairman(),c.getVicechairman(),c.getCintro(),DateUtil.dtot(c.getBulidTime()));
 			System.out.println("Dao.ClubDao.add 成功添加");
 		} catch(Exception e) {

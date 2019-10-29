@@ -1,8 +1,11 @@
 package management.dao;
 
 import java.util.Date;
+import java.util.List;
 
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import management.entity.Action;
 import management.util.DBUtil;
@@ -131,19 +134,41 @@ public class ActionDao {
 	 * 返回: List<Aciton>
 	 * @param uid
 	 * @return
-	public List<Action> selectByUid(int uid) {
-		String sql = "select * from Action where uid = ?;";
+	 */
+	public List<Action> selectByUid(int cid) {
+		String sql = "select * from Action where cid = ?;";
 		ResultSetHandler<List<Action>> rsh = new BeanListHandler<Action>(Action.class);
 		List<Action> list = null;
 		try { 
-			list = DBUtil.select(sql, rsh, uid);
-			System.out.println("Dao.ActionDao.selectByUid 根据uid获取此人的全部文章成功");
+			list = DBUtil.select(sql, rsh, cid);
+			System.out.println("Dao.ActionDao.selectByCid 根据cid获取社团的全部活动成功");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
-		 */
+	
+	
+	/**
+	 * 展示前num个Action
+	 * 参数: num
+	 * 返回: List<Action>
+	 * @param num
+	 * @return
+	 */
+	public List<Action> showActions(int num) {
+		String sql = "select * from Action order by aid desc limit ? ;";
+		ResultSetHandler<List<Action>> rsh = new BeanListHandler<Action>(Action.class);
+		List<Action> list = null;
+		try {
+			list = DBUtil.select(sql, rsh, num);
+			System.out.println("Dao.ActionDao.showActions 展示成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
 	
 	
 	

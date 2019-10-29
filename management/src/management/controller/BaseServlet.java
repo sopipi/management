@@ -75,11 +75,12 @@ public class BaseServlet extends HttpServlet {
 		try {
 		/*借助反射，调用对应的方法*/
 		String method = (String) req.getAttribute("method");
-		System.out.println(this.toString());
+		System.out.println(this.toString() + "****");
 		Method m = this.getClass().getMethod(method, javax.servlet.http.HttpServletRequest.class,
 				javax.servlet.http.HttpServletResponse.class);//获取方法
 		System.out.println(this.toString());
 		        m.invoke(this,req, resp);//执行方法
+		        System.out.println("service");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -117,10 +118,10 @@ public class BaseServlet extends HttpServlet {
 	 * @return
 	 */
 	public <T>T getBean(Map<String,Object> maps, String className) {
-		className = "superbook.bean." + className; 
+		className = "management.entity." + className; 
 		T obj = null;
 		try {
-		obj = BeanUtil.getBean(maps, className);
+			obj = BeanUtil.getBean(maps, className);
 		}catch(Exception e) {
 			System.out.println("反射对象失败");
 		}

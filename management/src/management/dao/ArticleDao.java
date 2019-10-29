@@ -115,6 +115,25 @@ public class ArticleDao {
 		return list;
 	}
 		 
+	/**
+	 * 首页展示文章
+	 * 参数: num(展示几篇)
+	 * @param num
+	 * @return
+	 */
+	public List<Article> showArticles(int num) {
+		String sql = "select * from Article order by artid desc limit ? ;";
+		ResultSetHandler<List<Article>> rsh = new BeanListHandler<Article>(Article.class);
+		List<Article> list = null;
+		try {
+			list = DBUtil.select(sql, rsh, num);
+			System.out.println("Dao.ArticleDao.showArticles 展示成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
 	
 	
 }

@@ -4,7 +4,6 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import management.entity.User;
 import management.util.DBUtil;
-
 public class UserDao {
 	
 	/**

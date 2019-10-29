@@ -40,15 +40,15 @@ public class ClubUserDao {
 	
 	/**
 	 * 修改职位
-	 * 参数: position,uid, cid
+	 * 参数: position,uid, cid, did
 	 * @param uid
 	 * @param cid
 	 * @param position
 	 */
-	public void changePosition(String uid, int cid, String position) {
-		String sql = "update ClubUser set position=? where uid=? and cid=?;";
+	public void changePosition(String uid, int cid,int did, String position) {
+		String sql = "update ClubUser set position=? and did=? where uid=? and cid=?;";
 		try {
-			DBUtil.update(sql, position, uid, cid);
+			DBUtil.update(sql, position,did, uid, cid);
 			System.out.println("Dao.ClubUserDao.changePosition 修改社团职位成功");
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -72,6 +72,7 @@ public class ClubUserDao {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	
 	
