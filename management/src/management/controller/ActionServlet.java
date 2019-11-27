@@ -48,4 +48,25 @@ public class ActionServlet extends BaseServlet{
 		}
 		write(response, jsonArray.toString());
 	}
+	
+	
+	/**
+	 * 返回分类活动
+	 * @param request
+	 * @param response
+	 */
+	public void selectByCategory(HttpServletRequest request, HttpServletResponse response) {
+		//解析参数
+		Map<String, Object> map = (Map)getJSONParameter(request);
+		String category = (String)map.get("category");
+		List<Action> list = new ActionService().selectByCategory(category);
+		//返回前端
+		JSONArray  jsonArray = new JSONArray();
+		for(Action a : list) {
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("Action", a);
+			jsonArray.add(jsonObject);
+		}
+		write(response, jsonArray.toString());
+	}
 }

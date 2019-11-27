@@ -12,6 +12,7 @@ import java.util.Date;
    aimg                 varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
    startTime           datetime,
    endTime             datetime,
+   category
  */
 public class Action {
 	private Integer aid;     //活动编号
@@ -19,17 +20,25 @@ public class Action {
 	private Integer cid;   //社团编号
 	private String aintro;   //活动简介
 	private String aImg;    //活动图片
+	private String category;//活动类别
 	private Date startTime;   //开始时间
 	private Date endTime;     //结束时间
-	public Action(Integer aid, String aname, Integer cid, String aintro, String aImg, Date startTime, Date endTime) {
+	public Action(Integer aid, String aname, Integer cid, String aintro,  String category,String aImg, Date startTime, Date endTime) {
 		super();
 		this.aid = aid;
 		this.aname = aname;
 		this.cid = cid;
 		this.aintro = aintro;
 		this.aImg = aImg;
+		this.category = category;
 		this.startTime = startTime;
 		this.endTime = endTime;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public Action(String aname, Integer cid, String aintro, String aImg, Date startTime, Date endTime) {
 		super();
@@ -147,8 +156,9 @@ public class Action {
 	@Override
 	public String toString() {
 		return "Action [aid=" + aid + ", aname=" + aname + ", cid=" + cid + ", aintro=" + aintro + ", aImg=" + aImg
-				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
+				+ ", category=" + category + ", startTime=" + startTime + ", endTime=" + endTime + "]";
 	}
+
 	
 	
 }

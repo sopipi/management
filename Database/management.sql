@@ -96,6 +96,7 @@ create table Action
    aImg                 varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
    startTime           datetime,
    endTime             datetime,
+   category                varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
    primary key (aid)
 );
 

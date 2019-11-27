@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script src="js/jquery.js"></script>
+<script src="js/index.js"></script>
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+	
+	<!-- css files -->
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' /><!-- custom css -->
+    <link href="css/font-awesome.min.css" rel="stylesheet"><!-- fontawesome css -->
+	<link rel="stylesheet" href="css/activity.css">
+	<!-- //css files -->
+	
+	<!-- google fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext" rel="stylesheet">
+	<!-- //google fonts -->
+	
+</head>
+<body>
+<!-- //header -->
+<header>
+	<div class="container">
+		<!-- top header -->
+		<div class="row top_header pt-3">
+		</div>
+		<!-- top header -->
+        
+		<!-- nav -->
+		<nav class="pt-2">
+			<div id="logo">
+				<h1> <a href="index.html"><span class="fa fa-ship"></span> 西南民大社小团 </a></h1>
+			</div>
+			<label for="drop" class="toggle">Menu</label>
+			<input type="checkbox" id="drop" />
+			<ul class="menu mt-md-2 ml-auto">
+				<li class="mr-lg-4 mr-2 active"><a href="index.html">首页</a></li>
+				<li class="mr-lg-4 mr-2"><a href="services.html">社团组织</a></li>			
+				<li class="mr-lg-4 mr-2"><a href="activity.html?aid=1">社团活动</a></li>
+				<li class="mr-lg-3 mr-2 p-0">
+					<!-- First Tier Drop Down -->
+					<label for="drop-2" class="toggle"> Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+					<a href="#"> 我的社团 <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+					<input type="checkbox" id="drop-2"/>
+					<ul class="inner-dropdown">
+	              <li><a href="information.html">个人信息</a></li>
+						<li><a href="contact.html">我的社团</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->
+		
+<!-- banner -->
+<section class="banner position-relative" id="home">
+	<div class="container">	
+		<div class="banner-text">
+			<div class="slider-info">
+				<div class="agileinfo-logo mt-lg-5">
+					<h2> 西南民族大学 <br> 联合社团管理中心</h2>
+					<a href="contact.html"> 账号登录 </a>
+				</div>
+			</div>
+		</div>
+		<div class="choose text-center position-absolute d-lg-flex">
+			
+			<div class="choose-icon">
+				<a class="container_a" href="activity.html?aid=1">
+				<span class="fa fa-ship" aria-hidden="true"><img src="picture/活动.png" height="50" width="50"/></span>
+				<div class=" choose-grid">
+					<h3 class="mt-4">运营活动</h3>
+					<p class="">合作是财富的本源</p>
+				</div>
+				</a>
+			</div>
+			
+			<div class="choose-icon">
+				<a class="container_a" href="activity_2.html?aid=2">
+				<span class="fa fa-truck" aria-hidden="true"><img src="picture/班级志愿活动.png" height="50" width="50"/></span>
+				<div class="choose-grid">
+					<h3 class="mt-4">志愿活动</h3>
+					<p class="">服务是素质的开始</p>
+				</div>
+				</a>
+			</div>
+			
+			<div class="choose-icon">
+				<a class="container_a" href="activity.html?aid=3">
+				<span class="fa fa-ship" aria-hidden="true"><img src="picture/毕业教育活动.png" height="50" width="50"/></span>
+				<div class="choose-grid">
+					<h3 class="mt-4">教育活动</h3>
+					<p class="">知识是能力的前提</p>
+				</div>
+				</a>
+			</div>
+			
+			<div class="choose-icon">
+				<a class="container_a" href="activity.html?aid=4">
+				<span class="fa fa-plane" aria-hidden="true"><img src="picture/党建活动.png" height="50" width="50"/></span>
+				<div class="choose-grid">
+					<h3 class="mt-4">党建活动</h3>
+					<p class="">爱国是灵魂的提升</p>
+				</div>
+				</a>
+			</div>
+			
+			<div class="choose-icon mr-0">
+				<a class="container_a" href="activity.html?aid=5">
+				<span class="fa fa-truck" aria-hidden="true"><img src="picture/消息_活动.png" height="50" width="50"/></span>
+				<div class="choose-grid">
+					<h3 class="mt-4">体育活动</h3>
+					<p class="">身体是学习的本钱</p>
+				</div>
+				</a>
+			</div>
+			
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</section>
+<div class="clearfix"></div>
+<!-- //banner -->
+
+<!-- about -->
+<section class="about py-5" id="how">
+	<div class="container py-lg-5">
+		<div class="row about-grids">
+			<div class="col-lg-6 about-left">
+				<img src="images/about.jpg" alt="" class="img-fluid"/>
+			</div>
+			<div class="col-lg-6 grid1 mt-lg-0 mt-4 pl-lg-5">
+				<h3 class="my-lg-4 mb-2">西南民族大学</h3>
+				<p class="">砥砺奋进，岁月流金。西南民族大学坐落于有“天府之国”美誉的国家历史文化名城——成都，染青城峨眉之灵秀，汲工部武侯之神韵，是民族高等教育镶嵌在祖国大西南的一颗明珠。</p>
+				<p class="mt-3">西南民族大学是在毛泽东、周恩来、邓小平、王维舟等老一辈无产阶级革命家亲自关怀下，新中国最早建立的民族高校之一。学校继承了诞生于抗日烽火中延安民族学院的优良办学传统，润育在共和国初升的晨曦里，凤凰涅槃在改革开放时期，当前正意气风发地奋进在新时代新征程。</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //about -->
+
+<!-- services -->
+<section class="services py-5 bg-clr" id="services">
+	<div class="container py-lg-5" id="goodclub">
+		<div class="row mt-lg-5">
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-md-0 mb-4">
+				<h4 class="heading mt-3 ml-3">2019年 <br/>西南民族大学 <br/> 优秀社团展示</h4>
+			</div>
+			
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+			  <a href="about.html" class="a_url">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-icon">
+							<span class="fa fa-ship" aria-hidden="true"><img src="picture/acm.jpg" /></span>
+						</div>
+						<div class="our-services-text">
+							<h4>SMUACM俱乐部</h4>
+							<p>自2005年组建ACM集训队，由谈文蓉、校景中、周绪川老师任教练，于同年参加第29届ACM国际大学生程序竞赛亚洲区决赛，目前已连续参加15届。</p>
+						</div>
+					</div>
+				</div>
+			 </a>
+			</div>
+				
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-icon">
+							<span class="fa fa-truck" aria-hidden="true"><a href="#"><img src="picture/计协.jpg" ></a></span>
+						</div>
+						<div class="our-services-text">
+							<h4>计算机应用与发展协会</h4>
+							<p>西南民族大学计算机应用与发展协会成立于1999年，由校团委和计算机科学与技术学院共同指导，是民大的学术科技类社团。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-md-0 mb-60">
+					<div class="services-inner">
+						<div class="our-services-icon">
+							<span class="fa fa-ship" aria-hidden="true"><a href="#"><img src="picture/混合风尚街舞社..jpg"/></a></span>
+						</div>
+						<div class="our-services-text">
+							<h4>混合风尚街舞社</h4>
+							<p>西南民族大学混合风尚街舞社成立于2004年，由校团委指导，是民大的艺术类社团，也是民大唯一一个以街舞为主要形式的特色社团。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-md-0 mb-60">
+					<div class="services-inner">
+						<div class="our-services-icon">
+							<span class="fa fa-plane" aria-hidden="true"><a href="#"><img src="picture/埃索欧戏剧社.jpg"/></a></span>
+						</div>
+						<div class="our-services-text">
+							<h4>埃索欧戏剧社</h4>
+							<p>西南民族大学埃索欧戏剧社成立于2005年，由校团委指导，是民大的艺术类社团， 埃索欧戏剧社是学校唯一的戏剧类社团。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper">
+					<div class="services-inner">
+						<div class="our-services-icon">
+							<span class="fa fa-truck" aria-hidden="true"><a href="#"><img src="picture/摄影协会.jpg"/></a></span>
+						</div>
+						<div class="our-services-text">
+							<h4>摄影协会</h4>
+							<p>西南民族大学摄影协会成立于1990 年，由校团委和艺术学院共同指导，是民大的艺术类社团，为丰富大学生课余生活、推动校园文化发展做贡献。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //services -->
+
+
+<!-- footer-top -->
+<section class="footer-top py-5">
+	<div class="container">
+		<div class="row footer-top-grid">
+			<div class="col-sm-6">
+				<h3>加入社联</h3>
+				<p>成为我们开心大家庭的一份子</p>
+			</div>
+			<div class="col-sm-6 text-sm-right mt-sm-0 mt-3">
+				<h3><span class="fa fa-phone" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;996107870</h3>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //footer-top -->
+
+<!--footer -->
+<div class="footer footer_w3layouts_section_1its py-5" id="subscribe">
+	<div class="container pt-sm-4">
+		<div class="row footer-grid">
+			<div class="col-md-5 footer-grid_section_1its_w3">
+				<div class="footer-title">
+					<h3>Who we are</h3>
+				</div>
+				<div class="footer-text">
+					<p>我们是“光头才能更强”。<br/>一群充满梦想的tu可tou爱da宝xue宝sheng。<br/>加油加油</p>
+					<ul class="social_section_1info">
+						<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-5 footer-grid_section_1its_w3 mt-md-0 mt-4">
+				<div class="footer-title">
+					<h3>Useful Links</h3>
+				</div>
+				<ul class="links">
+					<li><a href="http://www.swun.edu.cn">西南民族大学官网</a></li>
+					<li><a href="http://szjy.swun.edu.cn/Website">西南民族大学学工网</a></li>
+					<li><a href="http://jwxt.swun.edu.cn/jwglxt/xtgl/login_slogin.html?language=zh_CN&_t=1560267675395">西南民族大学教务系统</a></li>
+				</ul>
+			</div>
+			<div class="col-md-4 col-sm-7 footer-grid_section_1its_w3 mt-md-0 mt-4">
+				<div class="footer-title">
+					<h3>Put questions to</h3>
+				</div>
+				<div class="footer-text">
+					<p>有疑问可以给我们发消息 <br/> （不过最好还是别发了）</p>
+					<form action="#" method="post">
+						<input type="email" name="Email" placeholder="Enter your email..." required>
+						<button class="btn1"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+						<div class="clearfix"> </div>
+					</form>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<!-- move top -->
+		<div class="move-to-top text-center">
+			<a href="#home" class="move-top"><span class="fa fa-angle-double-up" aria-hidden="true"></span></a>
+		</div>
+		<!-- //move top -->
+		
+	</div>
+</div>
+<!-- //footer -->
+
+</body>
+</html>

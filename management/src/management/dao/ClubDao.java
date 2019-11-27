@@ -1,8 +1,13 @@
 package management.dao;
 
+import java.util.List;
+
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import management.entity.Club;
+import management.entity.ClubUser;
 import management.util.DBUtil;
 import management.util.DateUtil;
 
@@ -134,10 +139,44 @@ public class ClubDao {
 		return club;
 	}
 	
-
 	
+	/**
+	 * 展示社团全部成员
+	 * 参数: cid
+	 * @param cid
+	 * @return
+	 */
+	public List<ClubUser> showClubUser(int cid) {
+		String sql = "select uid from ClubUser where cid=?;";
+		ResultSetHandler<List<ClubUser>> rsh = new BeanListHandler<ClubUser>(ClubUser.class);
+		List<ClubUser> list = null;
+		try {
+			list = DBUtil.select(sql, rsh, cid);
+			System.out.println("Dao.ClubDao.ShowClubUser 社团全部成员的ClubUser成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
-	
+	/**
+	 * 展示社团全部成员
+	 * 参数: cid
+	 * @param cid
+	 * @return
+	 */
+	public List<Club> getRandClub(int a) {
+		String sql = "SELECT * FROM Club WHERE cid >= (SELECT floor(RAND() * (SELECT MAX(cid) FROM Club))) ORDER BY cid LIMIT  ?;";
+		ResultSetHandler<List<Club>> rsh = new BeanListHandler<Club>(Club.class);
+		List<Club> list = null;
+		try {
+			list = DBUtil.select(sql, rsh, a);
+			System.out.println("Dao.ClubDao.showRandClub 随机生成俱乐部 成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 	
 }

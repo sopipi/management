@@ -31,5 +31,16 @@ public class ActionService {
 		List<Action> list = new ActionDao().showActions(num);
 		return list;
 	}
+	
+	
+	/**
+	 * 返回分类活动
+	 * @param num
+	 * @return
+	 */
+	public List<Action> selectByCategory(String category) {
+		List<Action> list = new ActionDao().selectByCategory(category);
+		return list;
+	}
 
 }

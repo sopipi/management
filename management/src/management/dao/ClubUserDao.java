@@ -46,7 +46,7 @@ public class ClubUserDao {
 	 * @param position
 	 */
 	public void changePosition(String uid, int cid,int did, String position) {
-		String sql = "update ClubUser set position=? and did=? where uid=? and cid=?;";
+		String sql = "update ClubUser set position=?, did=? where uid=? and cid=?;";
 		try {
 			DBUtil.update(sql, position,did, uid, cid);
 			System.out.println("Dao.ClubUserDao.changePosition 修改社团职位成功");

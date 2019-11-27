@@ -3,8 +3,10 @@ package management.dao;
 import java.util.List;
 
 import org.apache.commons.dbutils.ResultSetHandler;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
+import management.entity.ClubUser;
 import management.entity.Department;
 import management.util.DBUtil;
 
@@ -33,9 +35,9 @@ public class DepartmentDao {
 	 * @param d
 	 */
 	public void add(Department d) {
-		String sql = "insert into Department(did,dname,cid,dintro) values(?,?,?,?); ";
+		String sql = "insert into Department(dname,cid,dintro) values(?,?,?); ";
 		try {
-			DBUtil.update(sql, d.getDid(),d.getDname(),d.getCid(),d.getDid());
+			DBUtil.update(sql,d.getDname(),d.getCid(),d.getDintro());
 			System.out.println("dao.Department.add 添加部门成功");
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -70,13 +72,52 @@ public class DepartmentDao {
 	 * @param dintro
 	 */
 	public void changeInfo(int did, String dname, String dintro) {
-		String sql = "update Department set dname=? and dintro=? where did=?; ";
+		String sql = "update Department set dname=?, dintro=? where did=?; ";
 		try {
 			DBUtil.update(sql, dname, dintro, did);
 			System.out.println("Dao.DepartmentDao.changeInfo 修改部门信息成功");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	/**
+	 * 展示部门成员
+	 * 参数: did
+	 * @param did
+	 * @return
+	 */
+	public List<ClubUser> showDepartmentUser(int did) {
+		String sql = "select * from ClubUser where did=?;";
+		ResultSetHandler<List<ClubUser>> rsh = new BeanListHandler<ClubUser>(ClubUser.class);
+		List<ClubUser> list = null;
+		try {
+			list = DBUtil.select(sql, rsh, did);
+			System.out.println("Dao.Department.showDepartmentUser 展示部门成员ClubUser成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	
+	/**
+	 * 展示部门信息
+	 * 参数: did
+	 * @param did
+	 * @return
+	 */
+	public Department selectByDid(int did) {
+		String sql = "select * from Department where did=?;";
+		Department d = null;
+		try {
+			d = DBUtil.select(sql, new BeanHandler<Department>(Department.class), did);
+			System.out.println("Dao.DepartmentDao.selectByDid 成功: " + d.toString());
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return d;
 	}
 
 }

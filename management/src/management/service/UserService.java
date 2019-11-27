@@ -1,4 +1,5 @@
 package management.service;
+
 import management.dao.UserDao;
 import management.entity.User;
 
@@ -56,8 +57,18 @@ public class UserService {
 		return u;
 	}
 	
+	/**
+	 * 修改头像
+	 * @param uid
+	 * @param AImg
+	 * @return
+	 */
 	public boolean changeHeardImg(String uid, String AImg) {
 		new UserDao().changeHeardImg(uid, AImg);
 		return true;
 	}
+	
+
+
+	
 }

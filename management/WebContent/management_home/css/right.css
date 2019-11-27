@@ -1,0 +1,57 @@
+.body {
+}
+.index_viewtop {
+	height: 50px;
+	width: 100%;
+	background: #145694;
+}
+.right {
+	background: url("../images/banner.jpg") no-repeat 5px 5px;
+	display: flex;
+	width: 80%;
+	height: 500px;
+	font-size: 14px;
+	justify-content: center;
+	align-items: center;
+	float: right;
+}
+.right_view {
+	display: flex;
+	opacity: 0.9;
+	width: 50%;
+	height: 400px;
+	align-items: center;
+	justify-content: center;
+	background: #F0F0F0;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.right_view_1 {
+	display: flex;
+	opacity: 0.9;
+	width: 90%;
+	height: 400px;
+	align-items: center;
+	justify-content: center;
+	background: #F0F0F0;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.TableBlack {
+	width: 95%;
+	height: 95%;
+}
+.right_view #content_show td {
+	background-color: #FFFFFF;
+	text-align: center;
+	width: 40%;
+	/*	border: black 1px;*/
+	border-bottom: black 1px;
+}
+.right_view_1 #content_show td {
+	background-color: #FFFFFF;
+	text-align: center;
+	width: 15%;
+	/*	border: black 1px;*/
+	border-bottom: black 1px;
+}

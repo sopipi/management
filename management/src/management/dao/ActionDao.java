@@ -19,10 +19,25 @@ public class ActionDao {
 	 * @param a
 	 */
 	public void add(Action a) {
-		String sql = "insert into Action(aname,cid,aintro,aImg,startTime,endTime) values(?,?,?,?,?,?);";
+		String sql = "insert into Action(aname,cid,aintro,aImg,startTime,endTime,category) values(?,?,?,?,?,?,?);";
 		try {
-			DBUtil.update(sql,a.getAname(),a.getCid(),a.getAintro(),a.getaImg(),DateUtil.dtot(a.getStartTime()),DateUtil.dtot(a.getEndTime()));
+			DBUtil.update(sql,a.getAname(),a.getCid(),a.getAintro(),a.getaImg(),DateUtil.dtot(a.getStartTime()),DateUtil.dtot(a.getEndTime()),a.getCategory());
 			System.out.println("Dao.ActionDao.add 添加成功活动");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 添加审核活动
+	 * 参数: Action.class
+	 * @param a
+	 */
+	public void addVerify(Action a) {
+		String sql = "insert into VerifyAction(aname,cid,aintro,aImg,startTime,endTime,category) values(?,?,?,?,?,?,?);";
+		try {
+			DBUtil.update(sql,a.getAname(),a.getCid(),a.getAintro(),a.getaImg(),DateUtil.dtot(a.getStartTime()),DateUtil.dtot(a.getEndTime()),a.getCategory());
+			System.out.println("Dao.ActionDao.addVerify 添加成功活动");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -38,6 +53,20 @@ public class ActionDao {
 		try {
 			DBUtil.update(sql, aid);
 			System.out.println("Dao.ActionDao.delete  删除成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	/**
+	 * 删除审核活动
+	 * @param aid
+	 */
+	public void deleteVerify(int aid) {
+		String sql = "delete from VerifyAction where aid = ?;";
+		try {
+			DBUtil.update(sql, aid);
+			System.out.println("Dao.ActionDao.deleteVerify  删除成功");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}	
@@ -129,25 +158,43 @@ public class ActionDao {
 	}
 	
 	/**
-	 * 根据uid查找此人的写的全部文章
-	 * 参数: uid
+	 * 根据cid查找社团的全部活动
+	 * 参数: cid
 	 * 返回: List<Aciton>
-	 * @param uid
+	 * @param cid
 	 * @return
 	 */
-	public List<Action> selectByUid(int cid) {
+	public List<Action> selectByCid(int cid) {
 		String sql = "select * from Action where cid = ?;";
 		ResultSetHandler<List<Action>> rsh = new BeanListHandler<Action>(Action.class);
 		List<Action> list = null;
 		try { 
 			list = DBUtil.select(sql, rsh, cid);
-			System.out.println("Dao.ActionDao.selectByCid 根据cid获取社团的全部活动成功");
+			System.out.println("Dao.ActionDao.selectByCid 根据cid查看社团的全部活动成功");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
-	
+	/**
+	 * 根据category查活动
+	 * 参数: category
+	 * 返回: List<Aciton>
+	 * @param category
+	 * @return
+	 */
+	public List<Action> selectByCategory(String category) {
+		String sql = "select * from Action where category = ?;";
+		ResultSetHandler<List<Action>> rsh = new BeanListHandler<Action>(Action.class);
+		List<Action> list = null;
+		try { 
+			list = DBUtil.select(sql, rsh, category);
+			System.out.println("Dao.ActionDao.selectByCategory 根据category查看社团的全部活动成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 	/**
 	 * 展示前num个Action
@@ -170,6 +217,24 @@ public class ActionDao {
 		
 	}
 	
+	/**
+	 * 获取社团全部审核活动
+	 * 参数:cid
+	 * @param cid
+	 * @return
+	 */
+	public List<Action> selectVerifyByCid(int cid) {
+		String sql = "select * from VerifyAction where cid = ?;";
+		ResultSetHandler<List<Action>> rsh = new BeanListHandler<Action>(Action.class);
+		List<Action> list = null;
+		try { 
+			list = DBUtil.select(sql, rsh, cid);
+			System.out.println("Dao.ActionDao.selectVerifyByCid 根据cid获取全部审核活动成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 	
 }

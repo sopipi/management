@@ -1,0 +1,130 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>后台管理系统</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/left.js"></script>
+<link rel="stylesheet" href="css/left.css">
+<link rel="stylesheet" href="css/right.css">
+<script src="js/JoinClub.js"></script>
+<script src="js/AddActivity.js"></script>
+<script src="js/applyfordepartment.js"></script>
+  <script src="js/applyforpositionjudje.js"></script>
+  <script src="js/cyrm.js"></script>
+  <script src="js/introduce.js"></script>
+  <script src="js/buildNewClubJudge.js"></script>
+</head>
+	
+	
+<body class="body">
+	
+<!--大布局上方的view-->
+<div class="index_viewtop"></div>
+	
+<div class="left">
+  <div class="div1">
+	  
+    <div class="left_top"></div>
+	  
+    <div class="div2">
+      <div class="jbsz"> </div>
+      部门管理
+	</div>
+	  
+    <div class="div3">
+      <ul>
+        <li onclick="cyrm()"> 成员任免</li>
+        <li onclick="applyfordepartment()"> 申请管理</li>
+        <li onclick="addactivity()"> 活动发布</li>
+        <li onclick="chageintroduce()"> 信息修改</li>
+      </ul>
+    </div>
+	  
+    <div class="div2">
+      <div class="xwzx"> </div>
+      社团管理
+	</div>
+	  
+    <div class="div3">
+      <ul>
+        <li onclick="cyrm()"> 成员任免</li>
+        <li onclick="addactivity()"> 活动发布</li>
+        <li onclick="chageintroduce()"> 信息修改</li>
+        <li onclick="applyforpositionjudje()"> 活动场地申请</li>
+      </ul>
+    </div>
+	  
+    <div class="div2" >
+      <div class="zxcp"> </div>
+      社团委托
+	</div>  
+    <div class="div3">
+      <ul>
+        <li onclick="cyrm()">社团任免</li>
+        <li onclick="buildNewClubJudge()">社团成立申请</li>
+        <li onclick="applyforpositionjudje()">活动场地申请批准</li>
+      </ul>
+    </div>
+	  
+    <div class="div2">
+      <div class="lmtj"> </div>
+      加入申请
+	</div>
+	  
+    <div class="div3">
+      <ul>
+        <li onclick="add()">社团加入</li>
+      </ul>
+    </div>
+  </div>
+</div>
+	
+	
+<div class = "right">
+  <div class="right_view">
+		<table id="NumThree" class="TableBlack">
+			  
+            <tbody id = "content_show">
+              <tr>
+                <td  style="text-align: center;font-size:18pt;" colspan="2">用户修改密码</td>
+              </tr>
+              <tr>
+                <td  style="text-align: right; width:40%;">学号/工号： </td>
+                <td  style="text-align: left;"><span id="UserIds">201731104127</span></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FFFFFF" style="text-align: right;">姓名： </td>
+                <td bgcolor="#FFFFFF" style="text-align: left;"><span id="UserName">梁杰</span></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FFFFFF" style="text-align: right;">性别： </td>
+                <td bgcolor="#FFFFFF" style="text-align: left;"><span id="Sex">男</span></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FFFFFF" style="text-align: right;">用户类型：</td>
+                <td bgcolor="#FFFFFF" style="text-align: left;"><span id="UserType">学生</span></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FFFFFF" style="text-align: right;">所在单位： </td>
+                <td bgcolor="#FFFFFF" style="text-align: left;"><span id="Unit">计算机科学与技术学院</span></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FFFFFF" style="text-align: right;">新密码： </td>
+                <td bgcolor="#FFFFFF" style="text-align: left;"><input name="Pwd1" type="password" maxlength="20" id="Pwd1" style="width: 150px; margin-left: 1px;">
+                  <span style="color: red;">*</span> <span id="RegularExpressionValidator1" style="color:Red;display:none;">6-20位包含数字,字母,符号任意两种及以上混合</span></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FFFFFF" style="text-align: right;">再次输入密码：</td>
+                <td bgcolor="#FFFFFF" style="text-align: left;"><input name="Pwd2" type="password" maxlength="20" id="Pwd2" style="width: 150px; margin-left: 1px;">
+                  <span id="CompareValidator1" style="color:Red;position:relative;display:none;">两次输入密码不相同</span> <font color="red">*</font></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FFFFFF" style="text-align: center;" colspan="2"><input type="submit" name="BtnYes2" onclick="changeUser()" value="确认修改密码" id="BtnYes2" style="height:26px;width:100px;">
+                  &nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+	</div>
+</div>
+</body>
+</html>
