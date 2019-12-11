@@ -57,5 +57,15 @@ public class DepartmentService {
 		new ActionDao().addVerify(a);
 	}
 	
+	//展示此部门的用户申请表
+	public List<ClubUser> showVerifyUser(int did) {
+		List<ClubUser> list = new DepartmentDao().showUserVerify(did);
+		return list;
+	}
+
+	public Department getDidByName(String dname) {
+		Department d = new DepartmentDao().getDidByName(dname);
+		return d;
+	}
 	
 }

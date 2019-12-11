@@ -47,3 +47,55 @@ function applyforpositionjudje() {
     var comment = $("div.right");
     comment.html(html);
 }
+
+function applyforposition() {
+	 var html = "";
+	    $("div.right").empty();
+	    //头部框架
+	    html += "<div class=\"right_view\">" +
+	        "<table id=\"NumThree\" class=\"TableBlack\">" +
+	        "<tbody id = \"content_show\">";
+	    //内容填充
+	    html += " <tr>" +
+	        "<td id= \"actionName\" style=\"font-size:18pt;\" colspan=\"2\">活动场地申请</td>" +
+	        "</tr>" +
+	        "<tr>" +
+	        "<td >申请人部门</td>\n" +
+	        "<td><input id = \"clubname\"list=\"select_activity\" />\n" +
+	        "<datalist id=\"select_activity\">\n" +
+	        "<option value=\"软件部\">\n" +
+	        "<option value=\"SMUACM俱乐部\">\n" +
+	        "</datalist></td>\n" +
+	        "</tr>\n" +
+	        "<tr>\n" +
+	        "<td >申请人学号</td>\n" +
+	        "<td><input id = \"uid\" type=\"text\"></td>\n" +
+	        "</tr>\n" +
+	        "<tr>\n" +
+	        "<td>开始时间</td>\n" +
+	        "<td><input id = \"start_time\" type=\"datetime-local\" value=\"2015-09-24T13:59:59\"/></td>\n" +
+	        "</tr>\n" +
+	        "<tr>\n" +
+	        "<td>结束时间</td>\n" +
+	        "<td><input id = \"end_time\" type=\"datetime-local\" value=\"2015-09-24T13:59:59\"/></td>\n" +
+	        "</tr>\n" +
+	        "<tr>\n" +
+	        "<td >活动地点</td>\n" +
+	        "<td><input type=\"text\"></td>\n" +
+	        "</tr>\n" +
+	        "<tr>\n" +
+	        "<td >申请理由</td>\n" +
+	        "<td><input  id=\"aintro\"  type=\"text\"></td>\n" +
+	        "</tr>\n" +
+	        "</tr>";
+	    html += "<tr>\n" +
+	        "<td bgcolor=\"#FFFFFF\" style=\"text-align: center;\" colspan=\"2\">\n" +
+	        "<input type=\"submit\" name=\"BtnYes2\" onclick=\"addSuction()\" value=\"确认提交\" id=\"BtnYes2\" style=\"height:26px;width:100px;\">\n" +
+	        "&nbsp;</td>\n" +
+	        "</tr>";
+	    html += "</tbody>\n" +
+	        "          </table>\n" +
+	        "\t</div>";
+	    var comment = $("div.right");
+	    comment.html(html);
+}

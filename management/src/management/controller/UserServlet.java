@@ -1,13 +1,17 @@
 package management.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import management.entity.Club;
+import management.entity.ClubUser;
 import management.entity.User;
 import management.service.UserService;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 
@@ -106,5 +110,66 @@ public class UserServlet extends BaseServlet {
 		json.put("flag", "true");
 		write(response, json.toString());
 	}
+	
+	/**
+	 * 返回某用户加入的社团的信息
+	 * 参数:uid
+	 * @param request
+	 * @param response
+	 */
+	public void showUserClubs(HttpServletRequest request, HttpServletResponse response) {
+		//解析参数
+		Map<String, Object> map = (Map)getJSONParameter(request);
+		String uid = (String)map.get("uid");
+		List<ClubUser> list = new UserService().showUserClubs(uid);
+		
+		//返回给前端
+		JSONArray json = new JSONArray();
+		JSONObject ClubNum = new JSONObject();
+		ClubNum.put("ClubNum", list.size());
+		json.add(ClubNum);
+		for(ClubUser c : list) {
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("ClubUser", c);
+			json.add(c);
+		}
+		
+		write(response, json.toString());
+	}
+	
+	
+	/**
+	 * 申请加入某社团
+	 * 参数: uid, cid, did
+	 * @param request
+	 * @param response
+	 */
+	public void applyForJoinClub(HttpServletRequest request, HttpServletResponse response) {
+		//解析参数
+		Map<String, Object> map = (Map)getJSONParameter(request);
+		ClubUser cu = (ClubUser)getBean(map, "ClubUser");
+		new UserService().applyForJoinClub(cu);
+		//返回前端
+		JSONObject json = new JSONObject();
+		json.put("flag", "true");
+		write(response, json.toString());
+	}
+	
+	/**
+	 * 用户申请创建社团
+	 * @param request
+	 * @param response
+	 */
+	public void applyToCreateClub(HttpServletRequest request, HttpServletResponse response) {
+		//解析参数
+		Map<String, Object> map = (Map)getJSONParameter(request);
+		Club club = (Club)getBean(map, "Club");
+		new UserService().applyToCreateClub(club);
+		//返回前端
+		JSONObject json = new JSONObject();
+		json.put("flag", "true");
+		write(response, json.toString());
+	}
+
 
 }

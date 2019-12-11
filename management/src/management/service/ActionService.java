@@ -28,7 +28,7 @@ public class ActionService {
 	 * @return
 	 */
 	public List<Action> showActions(int num) {
-		List<Action> list = new ActionDao().showActions(num);
+		List<Action> list = new ActionDao().showNumActions(num);
 		return list;
 	}
 	

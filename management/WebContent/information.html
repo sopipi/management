@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="" />
+    <script src="js/jquery.js"></script>
+<script src="js/contact.js"></script>
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -73,41 +75,37 @@
 <div class="container">
 <div class="information_view">
       <div class="information_smalldiv">
-    <div class="information_smalldiv">昵&nbsp;&nbsp;称：
-          <input>
+    <div class="information_smalldiv" >姓&nbsp;&nbsp;名：
+          <input id="uname">
+          </input>
+        </div>
+        <div class="information_smalldiv" >学&nbsp;&nbsp;号：
+          <input id="uid">
           </input>
         </div>
     <div class="information_smalldiv">性&nbsp;&nbsp;别：
-          <input>
+          <input id="sex">
           </input>
         </div>
     <div class="information_smalldiv">学&nbsp;&nbsp;院：
-          <input>
+          <input id="faculty">
           </input>
         </div>
-    <div class="information_smalldiv">专&nbsp;&nbsp;业：
-          <input>
+        <div class="information_smalldiv">班&nbsp;&nbsp;级：
+          <input id="className">
           </input>
         </div>
     <div class="information_smalldiv">手&nbsp;&nbsp;机：
-          <input>
+          <input id="phone">
           </input>
         </div>
-    <div class="information_smalldiv">学&nbsp;&nbsp;号：
-          <input>
-          </input>
-        </div>
-    <div class="information_smalldiv">邮&nbsp;&nbsp;箱：
-          <input>
-          </input>
-        </div>
-    <div class="information_smalldiv">备&nbsp;&nbsp;注：
-          <input>
+    <div class="information_smalldiv">密&nbsp;&nbsp;码：
+          <input id="password">
           </input>
         </div>
     <div class="information_bottonview">
        
-	<button class="information_botton" type="button" >确认</button>
+	<button class="information_botton" type="button" onclick="regist()" >确认</button>
 
       </div>
   </div>

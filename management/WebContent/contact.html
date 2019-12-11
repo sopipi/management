@@ -6,20 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
+<script src="js/jquery.js"></script>
+<script src="js/contact.js"></script>
 
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-
-        function turntomanagement() {
-        	window.open("management_home/index.html");
-		}
-    </script>
 	
 	<!-- css files -->
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
@@ -85,22 +74,22 @@
 		<div class="main_grid_contact">
 			<div class="form">
 				<h3 class="text-capitalize mb-2">西南民大社小团</h3>
-				<form action="#" method="post">
+				<div action ="/management/admin_User_login?"method="post">
 					<div class="input-group">
                    		<button class="submit btn">用户名 </button>
-						<input type="text" class="margin2" name="name" placeholder="please input username" required>
+						<input type="text" id="uid" class="margin2" name="uid" placeholder="please input username" required>
 					</div>
 					<div class="input-group">
                    	 	<button class="submit btn">密码 </button>
-					 	<input type="text" class="margin2" name="email" placeholder="please input password"  required="">
+					 	<input type="text" id="password" class="margin2" name="pwd" placeholder="please input password"  required="">
 					</div>
 					<div class="input-group1">
-						<button class="submit btn"  onclick="turntomanagement()">登录 </button>   <button class="submit btn">注册 </button>
+						<button class="btn"  onclick="login()">登录 </button>   <button onclick ="toRegist()"class="btn">注册 </button>
 					</div>
                     <div class="input-group1">
 						
 					</div>
-				</form>
+				</div>
 			</div>
 			<div class="w3ls-contact">
 				<h3 class="text-capitalize mb-3">西南民族大学学生社团联合会</h3>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import management.entity.Action;
 import management.entity.Article;
+import management.entity.ClubUser;
 import management.entity.Department;
 import management.entity.User;
 import management.service.DepartmentService;
@@ -76,6 +77,24 @@ public class DepartmentServlet extends BaseServlet {
 		write(response, json.toString());
 	}
 	
+
+	/**
+	 * 展示部门信息
+	 * 参数: did
+	 * @param request
+	 * @param response
+	 */
+	public void getDidByName(HttpServletRequest request, HttpServletResponse response) {
+		//解析参数
+		Map<String, Object> map = (Map) getJSONParameter(request);
+		String dname = (String) map.get("dname");
+		Department department = new DepartmentService().getDidByName(dname);
+		//将部门信息返回给前端
+		JSONObject json = new JSONObject();
+		json.put("DepartmentInfo", department);
+		write(response, json.toString());
+	}
+	
 	
 	/**
 	 * 添加审核文章
@@ -109,6 +128,27 @@ public class DepartmentServlet extends BaseServlet {
 		JSONObject json = new JSONObject();
 		json.put("flag", "true");
 		write(response, json.toString());
+	}
+	
+	/**
+	 * 展示用户申请加入社团的申请表
+	 * @param request
+	 * @param response
+	 */
+	public void showUserVerify(HttpServletRequest request, HttpServletResponse response) {
+		//解析参数
+		Map<String, Object> map = (Map) getJSONParameter(request);
+		int did = (int)map.get("did");
+		List<ClubUser> list = new DepartmentService().showVerifyUser(did);
+		
+		//将全部申请信息信息返回给前端
+		JSONArray jsonArray = new JSONArray();
+		for(ClubUser cu : list) {
+			JSONObject json = new JSONObject();
+			json.put("VerifyClubUser", cu);
+			jsonArray.add(json);
+		}
+		write(response, jsonArray.toString());
 	}
 	
 }

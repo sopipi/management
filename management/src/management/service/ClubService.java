@@ -1,6 +1,7 @@
 package management.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import management.dao.ActionDao;
@@ -25,10 +26,6 @@ import management.entity.User;
  *
  */
 public class ClubService {
-	//随机生成优秀社团
-	public List<Club> getRandClub(int cid) {
-		return new ClubDao().getRandClub(cid);
-	}
 	
 	//申请成员加入
 	public void addUser(ClubUser cu) {
@@ -64,7 +61,7 @@ public class ClubService {
 			System.out.println(cu.toString());
 		}
 		//遍历ClubUser根据uid找出User信息并添加到userList列表中
-		List<User> userList = new ArrayList<>();
+		List<User> userList = new ArrayList();
 		UserDao dao = new UserDao();
 		for(ClubUser cu : clubUserList) {
 			User u = dao.selectByUid(cu.getUid());
@@ -119,4 +116,30 @@ public class ClubService {
 		new ArticleDao().deleteVerify(a.getArtid());
 	}
 
+	//同意加入某社团
+	public void agreeJoinClub(ClubUser cu) {
+		Date d = new Date();
+		cu.setJoinTime(d);
+		new ClubUserDao().agreeUserVerify(cu);
+	}
+	
+	//拒绝加入某社团
+	public void disagreeJoinClub(ClubUser cu) {
+		new ClubUserDao().disagreeUserVerify(cu);
+	}
+	
+	//展示社团审核表
+	public List<ClubUser> showUserVerify(int cid) {
+		List<ClubUser> list = new ClubDao().showUserVerify(cid);
+		return list;
+	}
+//随机生成优秀社团
+	public List<Club> getRandClub(int cid) {
+		return new ClubDao().getRandClub(cid);
+	}
+
+	public Club getCidByName(String cname) {
+		Club club = new ClubDao().getCidByName(cname);
+		return club;
+	}
 }

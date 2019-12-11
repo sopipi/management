@@ -7,7 +7,6 @@ import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
-import management.entity.Action;
 import management.entity.Article;
 import management.util.DBUtil;
 import management.util.DateUtil;
@@ -185,28 +184,42 @@ public class ArticleDao {
 		}
 		return list;
 	}
-		 
-
+	
 	/**
-	 * 展示前num个Article
-	 * 参数: num
-	 * 返回: List<Article>
-	 * @param num
+	 * 展示所有社团审核过的文章
+	 * 参数: 无
 	 * @return
 	 */
-	public List<Article> showArticles(int num) {
-		String sql = "select * from Articles order by aid desc limit ? ;";
+	public List<Article> showArticles() {
+		String sql = "select * from Article;";
 		ResultSetHandler<List<Article>> rsh = new BeanListHandler<Article>(Article.class);
 		List<Article> list = null;
-		try {
-			list = DBUtil.select(sql, rsh, num);
-			System.out.println("Dao.ActionDao.showActions 展示成功");
+		try { 
+			list = DBUtil.select(sql, rsh);
+			System.out.println("Dao.ArticleDao.showArticle 获取所有社团的文章成功");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return list;
-		
 	}
 	
+	/**
+	 * 展示所有社团审核通过的文章的前num个
+	 * 参数: num
+	 * @param num
+	 * @return
+	 */
+	public List<Article> showNumArticles(int num) {
+		String sql = "select * from Article order by artid desc limit ? ;";
+		ResultSetHandler<List<Article>> rsh = new BeanListHandler<Article>(Article.class);
+		List<Article> list = null;
+		try {
+			list = DBUtil.select(sql, rsh, num);
+			System.out.println("Dao.ActionDao.showNumArticles 获取审核通过的前 num 个文章展示成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 }

@@ -11,6 +11,7 @@ import management.entity.Action;
 import management.util.DBUtil;
 import management.util.DateUtil;
 
+
 public class ActionDao {
 	
 	/**
@@ -19,9 +20,9 @@ public class ActionDao {
 	 * @param a
 	 */
 	public void add(Action a) {
-		String sql = "insert into Action(aname,cid,aintro,aImg,startTime,endTime,category) values(?,?,?,?,?,?,?);";
+		String sql = "insert into Action(aname,cid,aintro,aImg,startTime,endTime) values(?,?,?,?,?,?);";
 		try {
-			DBUtil.update(sql,a.getAname(),a.getCid(),a.getAintro(),a.getaImg(),DateUtil.dtot(a.getStartTime()),DateUtil.dtot(a.getEndTime()),a.getCategory());
+			DBUtil.update(sql,a.getAname(),a.getCid(),a.getAintro(),a.getaImg(),DateUtil.dtot(a.getStartTime()),DateUtil.dtot(a.getEndTime()));
 			System.out.println("Dao.ActionDao.add 添加成功活动");
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -34,9 +35,9 @@ public class ActionDao {
 	 * @param a
 	 */
 	public void addVerify(Action a) {
-		String sql = "insert into VerifyAction(aname,cid,aintro,aImg,startTime,endTime,category) values(?,?,?,?,?,?,?);";
+		String sql = "insert into VerifyAction(aname,cid,aintro,aImg,startTime,endTime) values(?,?,?,?,?,?);";
 		try {
-			DBUtil.update(sql,a.getAname(),a.getCid(),a.getAintro(),a.getaImg(),DateUtil.dtot(a.getStartTime()),DateUtil.dtot(a.getEndTime()),a.getCategory());
+			DBUtil.update(sql,a.getAname(),a.getCid(),a.getAintro(),a.getaImg(),DateUtil.dtot(a.getStartTime()),DateUtil.dtot(a.getEndTime()));
 			System.out.println("Dao.ActionDao.addVerify 添加成功活动");
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -176,25 +177,7 @@ public class ActionDao {
 		}
 		return list;
 	}
-	/**
-	 * 根据category查活动
-	 * 参数: category
-	 * 返回: List<Aciton>
-	 * @param category
-	 * @return
-	 */
-	public List<Action> selectByCategory(String category) {
-		String sql = "select * from Action where category = ?;";
-		ResultSetHandler<List<Action>> rsh = new BeanListHandler<Action>(Action.class);
-		List<Action> list = null;
-		try { 
-			list = DBUtil.select(sql, rsh, category);
-			System.out.println("Dao.ActionDao.selectByCategory 根据category查看社团的全部活动成功");
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
+	
 	
 	/**
 	 * 展示前num个Action
@@ -203,18 +186,17 @@ public class ActionDao {
 	 * @param num
 	 * @return
 	 */
-	public List<Action> showActions(int num) {
+	public List<Action> showNumActions(int num) {
 		String sql = "select * from Action order by aid desc limit ? ;";
 		ResultSetHandler<List<Action>> rsh = new BeanListHandler<Action>(Action.class);
 		List<Action> list = null;
 		try {
 			list = DBUtil.select(sql, rsh, num);
-			System.out.println("Dao.ActionDao.showActions 展示成功");
+			System.out.println("Dao.ActionDao.showNumActions 展示成功");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return list;
-		
 	}
 	
 	/**
@@ -236,5 +218,42 @@ public class ActionDao {
 		return list;
 	}
 	
+	/**
+	 * 展示全部社团的审核通过的活动
+	 * 所需参数:无
+	 * @return
+	 */
+	public List<Action> showActions() {
+		String sql = "select * from Action;";
+		ResultSetHandler<List<Action>> rsh = new BeanListHandler<Action>(Action.class);
+		List<Action> list = null;
+		try {
+			list = DBUtil.select(sql, rsh);
+			System.out.println("Dao.ActionDao.showAction 展示成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	/**
+	 * 根据category查活动
+	 * 参数: category
+	 * 返回: List<Aciton>
+	 * @param category
+	 * @return
+	 */
+	public List<Action> selectByCategory(String category) {
+		String sql = "select * from Action where category = ?;";
+		ResultSetHandler<List<Action>> rsh = new BeanListHandler<Action>(Action.class);
+		List<Action> list = null;
+		try { 
+			list = DBUtil.select(sql, rsh, category);
+			System.out.println("Dao.ActionDao.selectByCategory 根据category查看社团的全部活动成功");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 }

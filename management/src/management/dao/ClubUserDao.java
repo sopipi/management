@@ -1,6 +1,7 @@
 package management.dao;
 
 import management.entity.ClubUser;
+import management.service.ClubService;
 import management.util.DBUtil;
 import management.util.DateUtil;
 
@@ -73,6 +74,54 @@ public class ClubUserDao {
 		}
 	}
 	
+	/**
+	 * 用户申请加入社团, 将此信息添加到社团申请表中
+	 * @param cu
+	 */
+	public void addVerify(ClubUser cu) {
+		String sql = "insert into VerifyClubUser(uid,cid,did,position,joinTime) values(?,?,?,?,?);";
+		try {
+			DBUtil.update(sql,cu.getUid(),cu.getCid(),cu.getDid(),cu.getPosition(),DateUtil.dtot(cu.getJoinTime()));
+			System.out.println("Dao.ClubUserDao.addVerify 添加社团成员审核表成功");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 同意某用户加入社团的申请表
+	 * @param uid
+	 * @param cid
+	 */
+	public void agreeUserVerify(ClubUser cu) {
+		//调用ClubService的添加成员功能
+		new ClubService().addUser(cu);
+		
+		//从审核表中删除
+		String sql = "delete from VerifyClubUser where uid=? and cid=?;";
+		try {
+			DBUtil.update(sql, cu.getUid(), cu.getCid());
+			System.out.println("Dao.ClubUser.disagreeVerify 同意用户加入社团申请表");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 拒绝某用户加入社团的申请表
+	 * @param uid
+	 * @param cid
+	 */
+	public void disagreeUserVerify(ClubUser cu) {
+		// 直接删除此请求
+		String sql = "delete from VerifyClubUser where uid=? and cid=?;";
+		try {
+			DBUtil.update(sql, cu.getUid(), cu.getCid());
+			System.out.println("Dao.ClubUser.disagreeVerify 拒绝用户加入社团申请表");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	

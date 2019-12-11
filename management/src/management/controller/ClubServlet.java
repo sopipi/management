@@ -157,6 +157,23 @@ public class ClubServlet extends BaseServlet {
 		write(response, json.toString());
 	}
 	
+	/**
+	 * 显示社团信息
+	 * 参数: cid
+	 * @param request
+	 * @param response
+	 */
+	public void getCidByName(HttpServletRequest request, HttpServletResponse response) {
+		//解析参数
+		Map<String, Object> map = (Map) getJSONParameter(request);
+		String cname = (String) map.get("cname");
+		Club club = new ClubService().getCidByName(cname);
+		//将社团信息返回给前端
+		JSONObject json = new JSONObject();
+		json.put("clubInfo", club);
+		write(response, json.toString());
+	}
+	
 	
 	
 	/**
@@ -256,7 +273,7 @@ public class ClubServlet extends BaseServlet {
 	}
 	
 	/**
-	 * 审核文章被据
+	 * 返回随机社团信息
 	 */
 	
 	
@@ -277,4 +294,62 @@ public class ClubServlet extends BaseServlet {
 		write(response, jsonArray.toString());
 	}
 	
+
+/**
+ * 同意用户加入社团申请表
+ * 参数: uid, cid, did
+ * @param request
+ * @param response
+ */
+public void agreeUserVerify(HttpServletRequest request, HttpServletResponse response) {
+	//解析参数
+	Map<String, Object> map = (Map) getJSONParameter(request);
+	ClubUser cu = (ClubUser) getBean(map, "ClubUser");
+	new ClubService().agreeJoinClub(cu);
+	
+	//返回前端
+	JSONObject json = new JSONObject();
+	json.put("falg", "true");
+	write(response, json.toString());
+}
+
+/**
+ * 拒绝用户加入社团申请表
+ * 参数: uid, cid, did
+ * @param request
+ * @param response
+ */
+public void disagreeUserVerify(HttpServletRequest request, HttpServletResponse response) {
+	//解析参数
+	Map<String, Object> map = (Map) getJSONParameter(request);
+	ClubUser cu = (ClubUser) getBean(map, "ClubUser");
+	new ClubService().disagreeJoinClub(cu);
+	
+	//返回前端
+	JSONObject json = new JSONObject();
+	json.put("falg", "true");
+	write(response, json.toString());
+}
+
+/**
+ * 展示此社团的加入社团申请表
+ * 参数: cid
+ * @param request
+ * @param response
+ */
+public void showUserVerify(HttpServletRequest request, HttpServletResponse response) {
+	//解析参数
+	Map<String, Object> map = (Map) getJSONParameter(request);
+	int cid = (int)map.get("cid");
+	List<ClubUser> list = new ClubService().showUserVerify(cid);
+	
+	//将全部申请信息信息返回给前端
+	JSONArray jsonArray = new JSONArray();
+	for(ClubUser cu : list) {
+		JSONObject json = new JSONObject();
+		json.put("VerifyClubUser", cu);
+		jsonArray.add(json);
+	}
+	write(response, jsonArray.toString());
+}
 }

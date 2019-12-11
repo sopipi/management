@@ -18,10 +18,10 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+
 import management.util.BeanUtil;
 import management.util.JSONUtil;
 import net.sf.json.JSONObject;
-
 
 /**
  * Servlet implementation class BaseServlet
@@ -109,7 +109,6 @@ public class BaseServlet extends HttpServlet {
 		}catch(IOException e) {
 			System.out.println("返回信息失败！");
 		}
-		return ;
 	}
 	
 	/**
@@ -119,7 +118,7 @@ public class BaseServlet extends HttpServlet {
 	 * @return
 	 */
 	public <T>T getBean(Map<String,Object> maps, String className) {
-		className = "manage.entity." + className; 
+		className = "management.entity." + className; 
 		T obj = null;
 		try {
 			obj = BeanUtil.getBean(maps, className);

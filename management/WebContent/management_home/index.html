@@ -13,6 +13,7 @@
   <script src="js/cyrm.js"></script>
   <script src="js/introduce.js"></script>
   <script src="js/buildNewClubJudge.js"></script>
+  <script src="js/resetPwd.js"></script>
 </head>
 	
 	
@@ -33,7 +34,7 @@
 	  
     <div class="div3">
       <ul>
-        <li onclick="cyrm()"> 成员任免</li>
+        <li onclick="getMoreInfo1();"> 成员任免</li>
         <li onclick="applyfordepartment()"> 申请管理</li>
         <li onclick="addactivity()"> 活动发布</li>
         <li onclick="chageintroduce()"> 信息修改</li>
@@ -47,10 +48,10 @@
 	  
     <div class="div3">
       <ul>
-        <li onclick="cyrm()"> 成员任免</li>
+        <li onclick="getMoreInfo1();"> 成员任免</li>
         <li onclick="addactivity()"> 活动发布</li>
         <li onclick="chageintroduce()"> 信息修改</li>
-        <li onclick="applyforpositionjudje()"> 活动场地申请</li>
+        <li onclick="applyforposition()"> 活动场地申请</li>
       </ul>
     </div>
 	  
@@ -119,7 +120,7 @@
                   <span id="CompareValidator1" style="color:Red;position:relative;display:none;">两次输入密码不相同</span> <font color="red">*</font></td>
               </tr>
               <tr>
-                <td bgcolor="#FFFFFF" style="text-align: center;" colspan="2"><input type="submit" name="BtnYes2" onclick="changeUser()" value="确认修改密码" id="BtnYes2" style="height:26px;width:100px;">
+                <td bgcolor="#FFFFFF" style="text-align: center;" colspan="2"><input type="submit" name="BtnYes2" onclick="resetPwd()" value="确认修改密码" id="BtnYes2" style="height:26px;width:100px;">
                   &nbsp;</td>
               </tr>
             </tbody>

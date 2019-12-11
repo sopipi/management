@@ -24,7 +24,7 @@ public class ArticleService {
 	 * @return
 	 */
 	public List<Article> showArticles(int num) {
-		List<Article> list = new ArticleDao().showArticles(num);
+		List<Article> list = new ArticleDao().showNumArticles(num);
 		return list;
 	}
 }
